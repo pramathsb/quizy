@@ -1,0 +1,51 @@
+.qb {
+    box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.5);
+    background-color: #fff;
+
+    &_header {
+        background-color: $blue;
+        color: $white;
+        padding: 10px 30px;
+        font-weight: bold;
+    }
+
+    &_question {
+        background-color: $lightBlue;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &_options {
+        padding: 40px 0;
+
+        input[type='radio'],
+        input[type='checkbox'] {
+            visibility: hidden;
+            position: absolute;
+        }
+
+        i {
+            color: $borderBlue;
+            font-size: 30px;
+            position: absolute;
+            right: 30px;
+        }
+    }
+
+    &_actions {
+        padding: 50px 15px;
+    }
+}
+
+.graph {
+    background: #eaf2ff;
+    & > div {
+        margin: auto;
+
+        & > div {
+            margin: auto;
+        }
+    }
+}

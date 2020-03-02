@@ -1,0 +1,30 @@
+.btn-pri {
+    @include button ($primaryButton,$white,$primaryButton)
+}
+
+.btn-sec {
+    @include button ($white,$primaryButton,$borderGray)
+}
+
+.btn-danger {
+    @include button (lighten($secondaryButton, 20%),$wrong,$secondaryButton)
+}
+
+.btn-options {
+    @include button ($white,$black,$borderBlue);
+
+    width: 80%;
+    display: block;
+    margin: 25px auto;
+    border-width: 2px;
+
+    text-align-last: left;
+    font-weight: normal;
+    font-size: 22px;
+    padding: 20px 40px;
+
+    &:hover, &.selected {
+        background-color: lighten($borderBlue,13%);
+        border-color: $borderBlue;
+    }
+}

@@ -1,0 +1,57 @@
+[
+    {
+        "qid": 1,
+        "type":"single",
+        "question": "Who is the Prime Minister of India?",
+        "answers": [
+            {"aid":1,"ans":"Narendra Modi"},
+            {"aid":2,"ans":"Rahul Gandhi"},
+            {"aid":3,"ans":"Sachin Tendulkar"},
+            {"aid":4,"ans":"Manmohan Singh"}
+        ]
+    },
+    {
+        "qid": 2,
+        "type":"single",
+        "question": "How many months do we have in a year?",
+        "answers": [
+            {"aid":1,"ans":"10"},
+            {"aid":2,"ans":"6"},
+            {"aid":3,"ans":"12"},
+            {"aid":4,"ans":"14"}
+        ]
+    },
+    {
+        "qid": 3,
+        "type":"multiple",
+        "question": "Which cars belong to Hyundai?",
+        "answers": [
+            {"aid":1,"ans":"City"},
+            {"aid":2,"ans":"i10"},
+            {"aid":3,"ans":"i20"},
+            {"aid":4,"ans":"Camry"}
+        ]
+    },
+    {
+        "qid": 4,
+        "type":"multiple",
+        "question": "Which are all the planets?",
+        "answers": [
+            {"aid":1,"ans":"Titan"},
+            {"aid":2,"ans":"Earth"},
+            {"aid":3,"ans":"Moon"},
+            {"aid":4,"ans":"Mars"}
+        ]
+    },
+    {
+        "qid": 5,
+        "type":"single",
+        "question": "What is 2+2?",
+        "answers": [
+            {"aid":1,"ans":"3"},
+            {"aid":2,"ans":"2"},
+            {"aid":3,"ans":"1"},
+            {"aid":4,"ans":"None of the above"}
+        ]
+    }
+]

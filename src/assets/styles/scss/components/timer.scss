@@ -1,0 +1,9 @@
+.timer {
+    color: $darkBlue;
+    font-weight: bold;
+    
+    .time {
+        display: inline-block;
+        min-width: 120px;
+    }
+}
