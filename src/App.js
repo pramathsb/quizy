@@ -100,7 +100,7 @@ class app extends Component {
   }
 
   showResult = () => {
-    console.log('triggered')
+    // console.log('triggered')
     this.setState({...this.state, quizComplete: true})
   }
 
