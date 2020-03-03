@@ -27,4 +27,13 @@
         background-color: lighten($borderBlue,13%);
         border-color: $borderBlue;
     }
+
+    &.disabled {
+        background-color: #fbfbfb;
+        border-color: #ccc;
+
+        i {
+            color: #ccc;
+        }
+    }
 }

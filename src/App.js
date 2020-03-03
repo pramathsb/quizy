@@ -13,8 +13,8 @@ class app extends Component {
 
   timer = 59800;
 
-  // state = JSON.parse(localStorage.getItem('state')) || {
-  state =  { 
+  state = JSON.parse(localStorage.getItem('state')) || {
+  // state =  { 
     currQid: 0,
     quizComplete: false,
     answers: {},
@@ -27,20 +27,18 @@ class app extends Component {
 
    navigate = (e,way) => {
     let cur = this.state.currQid;
-    let next = ++cur, prev = --cur,
-    min = 0,
-    max = question.length-1;
+    let min = 0, max = question.length;
 
-    let dir = way
+    let updateBtns = () => {
+      this.setState({...this.state, buttons: {...this.state.buttons, disablePrev: this.state.currQid === min? true : false, disableNext: this.state.currQid+1 === max ? true : false}})
+    }
 
-    // console.log(next === max ? true : false)
-
-    if (dir === 'next' && cur <= max) {
-      this.setState({...this.state, currQid: this.state.currQid+1, buttons: {...this.state.buttons, disablePrev: next === min? true : false, disableNext: next === max ? true : false}})
+    if (way === 'next' && cur <= max) {
+      this.setState({...this.state, currQid: this.state.currQid+1}, updateBtns);
     }
     
-    if (dir === 'prev' && this.state.currQid > min) {
-      this.setState({...this.state, currQid: this.state.currQid-1, buttons: {...this.state.buttons, disablePrev: prev === min+1? true : false, disableNext: prev === max ? true : false}})
+    if (way === 'prev' && this.state.currQid > min) {
+      this.setState({...this.state, currQid: this.state.currQid-1}, updateBtns);
     }
 
   };
@@ -52,7 +50,7 @@ class app extends Component {
     if(!this.state.locked[currQid] && e.target.dataset.anstype!=="multiple") {
       ans[currQid] =  e.target.dataset.aid-1;
       // console.log(ans,currQid,e.target.dataset.aid)
-      this.setState({...this.state, answers: ans, result: {...this.state.result, [currQid]:answers[currQid].answer===e.target.dataset.aid-1}}) 
+      this.setState({...this.state, answers: ans, result: {...this.state.result, [currQid]:answers[currQid].answer === e.target.dataset.aid-1}}) 
     }
     
     if(!this.state.locked[currQid] && e.target.dataset.anstype==="multiple") {
@@ -63,8 +61,6 @@ class app extends Component {
       }
       
       if(ans[currQid].includes(e.target.dataset.aid-1) && !e.target.checked) {
-        console.log('Initial:', ans[currQid], 'index', e.target.dataset.aid-1)
-
         if (e.target.dataset.aid-1 > -1) {
           ans[currQid].splice(ans[currQid].indexOf(e.target.dataset.aid-1), 1);
         }
