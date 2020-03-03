@@ -18,6 +18,7 @@ export default function (props) {
         } 
         
         if (!comp) {
+            props.showResult()
             return <span>Timeout</span>;
         } else {
             return <span>{precisionCorrect(hours)}:{precisionCorrect(minutes)}:{precisionCorrect(seconds)}</span>;
