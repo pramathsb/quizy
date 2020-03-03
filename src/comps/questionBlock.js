@@ -15,16 +15,19 @@ export default function (props) {
             </div>
             <div className="qb_actions">
                 <div className="row no-gutters">
-                    <div className="col order-1 text-right">
+                    <div className="col-12 col-lg order-1 text-center text-lg-right">
 
                         <button className="btn btn-sec" onClick={(e)=>props.navigate(e,'prev')} disabled={props.buttonsState.disablePrev}><i className="fas fa-angle-left"></i> Prev Question</button>
 
-                        <button className={`btn btn-pri ${(props.isLocked[props.currQuestion.qid-1]) ? 'btn-danger' : ''}`} onClick={()=>{props.lockThis()}}>  {(props.isLocked[props.currQuestion.qid-1] ? props.isLocked[(props.currQuestion.qid-1)] : false) ? <span><i className="fas fa-lock"></i> Locked</span> : <span><i className="fas fa-lock-open"></i>  Lock my answer</span>}</button>
+                        <button className={`d-none d-lg-inline-block btn btn-pri ${(props.isLocked[props.currQuestion.qid-1]) ? 'btn-danger' : ''}`} onClick={()=>{props.lockThis()}}>  {(props.isLocked[props.currQuestion.qid-1] ? props.isLocked[(props.currQuestion.qid-1)] : false) ? <span><i className="fas fa-lock"></i> Locked</span> : <span><i className="fas fa-lock-open"></i>  Lock my answer</span>}</button>
 
                         <button className="btn btn-pri" onClick={(e)=>{props.navigate(e,'next')}} disabled={props.buttonsState.disableNext}>Next Question <i className="fas fa-angle-right"></i></button>
                     </div>
-                    <div className="col-auto order-0">
-                        <button className="btn btn-danger" onClick={(e)=>{return props.clear()}}>Clear</button>
+
+                    <div className="col-12 col-lg-auto order-0 text-center ">
+                    <button className={`btn btn-pri d-lg-none ${(props.isLocked[props.currQuestion.qid-1]) ? 'btn-danger' : ''}`} onClick={()=>{props.lockThis()}}>  {(props.isLocked[props.currQuestion.qid-1] ? props.isLocked[(props.currQuestion.qid-1)] : false) ? <span><i className="fas fa-lock"></i> Locked</span> : <span><i className="fas fa-lock-open"></i>  Lock my answer</span>}</button>
+
+                    <button className="btn btn-danger" onClick={(e)=>{return props.clear()}}>Clear</button>
                     </div>
                 </div>
                 
