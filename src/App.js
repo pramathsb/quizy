@@ -76,7 +76,7 @@ class app extends Component {
 
   lockThis = () => {
     const currQid = this.state.currQid;
-    if(question[currQid].type==='single' && this.state.answers[currQid]>=0 && !this.state.locked[currQid]) {
+    if(question[currQid].type==='single' && this.state.answers[currQid]>=0 && this.state.answers[currQid]!=null && !this.state.locked[currQid]) {
       let locked = this.state.locked;
       locked[currQid] =  true;
       this.setState({...this.state, locked: locked})

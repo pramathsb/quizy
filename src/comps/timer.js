@@ -16,8 +16,7 @@ export default function (props) {
         if (completed) {
             comp = false;
         } 
-
-
+        
         if (!comp) {
             return <span>Timeout</span>;
         } else {
