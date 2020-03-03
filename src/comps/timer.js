@@ -36,7 +36,7 @@ export default function (props) {
                 <span><i className="fas fa-stopwatch"></i> Time Remaining: </span>
                 <span className="time pl-5">
                     {/* <Countdown renderer={renderer} date={Date.now() + 299000} /> */}
-                    <Countdown renderer={renderer} date={Date.now() + parseInt(props.timer)} onComplete={completed}/>
+                    <Countdown renderer={renderer} date={props.timer} onComplete={completed}/>
                 </span>
 
                 

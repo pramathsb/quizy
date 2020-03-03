@@ -21,7 +21,7 @@ class app extends Component {
     locked: {},
     buttons: {disableNext:false,disablePrev:false},
     result: {},
-    timeleft : question.length* this.timer,
+    timeleft : Date.now() + (question.length * this.timer),
     showTimer: true
   };
 
