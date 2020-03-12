@@ -27,7 +27,7 @@ class app extends Component {
   
   timer = 59800;
 
-  //state = JSON.parse(localStorage.getItem('state')) || {
+  state = JSON.parse(localStorage.getItem('state')) || {
    state =  { 
     currQid: this.qmap[0],
     vQid: 0,
@@ -51,10 +51,8 @@ class app extends Component {
     if (way === 'next' && cur <= max) {
       this.setState({...this.state, vQid: this.state.vQid+1, currQid: this.qmap[this.state.vQid+1]}, updateBtns);
     }
-    console.log('click', way)
     
     if (way === 'prev' && cur > min) {
-      console.log('prev worked')
       this.setState({...this.state, vQid: this.state.vQid-1, currQid: this.qmap[this.state.vQid-1]}, updateBtns);
     }
 
