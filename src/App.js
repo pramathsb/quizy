@@ -28,7 +28,7 @@ class app extends Component {
   timer = 59800;
 
   state = JSON.parse(localStorage.getItem('state')) || {
-   state =  { 
+  //  state =  { 
     currQid: this.qmap[0],
     vQid: 0,
     quizComplete: false,
