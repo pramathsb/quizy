@@ -11,34 +11,51 @@ let answers = require('./services/answers.json')
 
 class app extends Component {
 
+  questionLen = question.length;
+
+
+  rArr = () => {
+    let a = [];
+    for (let i=0; i<5; i++) {
+      a.push(i)
+    }
+
+    return a.sort(function() {return .5 - Math.random();});
+  }
+
+  qmap = this.rArr()
+  
   timer = 59800;
 
-  state = JSON.parse(localStorage.getItem('state')) || {
-  // state =  { 
-    currQid: 0,
+  //state = JSON.parse(localStorage.getItem('state')) || {
+   state =  { 
+    currQid: this.qmap[0],
+    vQid: 0,
     quizComplete: false,
     answers: {},
     locked: {},
-    buttons: {disableNext:false,disablePrev:false},
+    buttons: {disableNext:false,disablePrev:true},
     result: {},
     timeleft : Date.now() + (question.length * this.timer),
     showTimer: true
   };
 
    navigate = (e,way) => {
-    let cur = this.state.currQid;
+    let cur = this.state.vQid ;
     let min = 0, max = question.length;
 
     let updateBtns = () => {
-      this.setState({...this.state, buttons: {...this.state.buttons, disablePrev: this.state.currQid === min? true : false, disableNext: this.state.currQid+1 === max ? true : false}})
+      this.setState({...this.state, buttons: {...this.state.buttons, disablePrev: this.state.vQid === min? true : false, disableNext: this.state.vQid+1 === max ? true : false}})
     }
 
     if (way === 'next' && cur <= max) {
-      this.setState({...this.state, currQid: this.state.currQid+1}, updateBtns);
+      this.setState({...this.state, vQid: this.state.vQid+1, currQid: this.qmap[this.state.vQid+1]}, updateBtns);
     }
+    console.log('click', way)
     
-    if (way === 'prev' && this.state.currQid > min) {
-      this.setState({...this.state, currQid: this.state.currQid-1}, updateBtns);
+    if (way === 'prev' && cur > min) {
+      console.log('prev worked')
+      this.setState({...this.state, vQid: this.state.vQid-1, currQid: this.qmap[this.state.vQid-1]}, updateBtns);
     }
 
   };
@@ -119,12 +136,12 @@ class app extends Component {
 
   handleClear = () => {
     const currQid = this.state.currQid;
-    if(this.state.locked[currQid]) {
+    //if(this.state.locked[currQid]) {
       this.setState({...this.state, 
         answers: {...this.state.answers, [currQid]:null},
         locked: {...this.state.locked, [currQid]:false}
       })
-    }
+    //}
   }
 
    render() {
@@ -135,6 +152,7 @@ class app extends Component {
             {!this.state.quizComplete ? <Timer showResult={this.showResult} timer={this.state.timeleft}  showTimer={this.state.showTimer}/> : undefined}
             {!this.state.quizComplete ? 
               <QuestionBlock 
+                qmap={this.qmap}
                 currQuestion={currQuestion}
                 answers={this.state.answers}
                 navigate={this.navigate}
@@ -143,6 +161,7 @@ class app extends Component {
                 clear={this.handleClear}
                 lockThis={this.lockThis}
                 isLocked={this.state.locked}
+                vQid={this.state.vQid}
               /> 
               : <Result reset={this.handleReset} result={this.state.result} question={question.length}/>}
           </MainTemplate>
@@ -151,7 +170,7 @@ class app extends Component {
 
   componentDidUpdate () {
     // console.log('updated')
-    localStorage.setItem('state', JSON.stringify({...this.state}));
+    //localStorage.setItem('state', JSON.stringify({...this.state}));
   }
 }
 

@@ -7,7 +7,8 @@ export default function (props) {
     return (
         <div className="qb my-3">
             <div className="qb_header">
-                Question {props.currQuestion.qid}
+                {/* Question {props.currQuestion.qid} */}
+                Question {props.vQid+1}
             </div>
             <div className="qb_question"><h2>{props.currQuestion.question}</h2></div>
             <div className="qb_options">
@@ -27,7 +28,7 @@ export default function (props) {
                     <div className="col-12 col-lg-auto order-0 text-center ">
                     <button className={`btn btn-pri d-lg-none ${(props.isLocked[props.currQuestion.qid-1]) ? 'btn-danger' : ''}`} onClick={()=>{props.lockThis()}}>  {(props.isLocked[props.currQuestion.qid-1] ? props.isLocked[(props.currQuestion.qid-1)] : false) ? <span><i className="fas fa-lock"></i> Locked</span> : <span><i className="fas fa-lock-open"></i>  Lock my answer</span>}</button>
 
-                    <button className="btn btn-danger" onClick={(e)=>{return props.clear()}}>Clear</button>
+                    <button className={`btn btn-danger ${(props.isLocked[props.currQuestion.qid-1] ? props.isLocked[(props.currQuestion.qid-1)] : false) ? 'disabled' : ''}`} onClick={(e)=>{return props.clear()}} disabled={(props.isLocked[props.currQuestion.qid-1] ? props.isLocked[(props.currQuestion.qid-1)] : false) ? true : false}>Clear</button>
                     </div>
                 </div>
                 

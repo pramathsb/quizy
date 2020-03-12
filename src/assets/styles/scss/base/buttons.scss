@@ -7,7 +7,18 @@
 }
 
 .btn-danger {
-    @include button (lighten($secondaryButton, 20%),$wrong,$secondaryButton)
+    @include button (lighten($secondaryButton, 20%),$wrong,$secondaryButton);
+
+    &.disabled {
+        background-color: #fbfbfb;
+        border-color: #ccc;
+        color: #ccc;
+        cursor: not-allowed;
+
+        i {
+            color: #ccc;
+        }
+    }
 }
 
 .btn-options {
@@ -31,6 +42,7 @@
     &.disabled {
         background-color: #fbfbfb;
         border-color: #ccc;
+        cursor: not-allowed;
 
         i {
             color: #ccc;
